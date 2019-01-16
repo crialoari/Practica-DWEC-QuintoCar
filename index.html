@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>QuintoCar - CompraVenta de coches</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="estilo.css">
+    <!--fuente-->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+	<!--titulo-->
+	<div class="jumbotron jumbotron-fluid py-4 bg-primary my-0">
+		<div class="container-fluid justify-content-start">
+			<div class="row">
+				<div class="col-2">
+				<a href="#" onclick="mostrarFrm('bienvenida'); return false">
+					<img src="logo.png" class="img-fluid">
+				</a>
+				</div>
+				<div class="col d-flex align-items-end">
+					<h1 class="text-white">QuintoCar</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--menu-->
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuCollapse" aria-controls="menuCollapse" aria-expanded="false" aria-label="Toggle navigation">
+   	 		<span class="navbar-toggler-icon"></span>
+  		</button>
+		<div class="collapse navbar-collapse" id="menuCollapse">
+		    <ul class="navbar-nav">
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divAltaCliente'); return false">Alta cliente</a>
+		      </li>
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divAltaVehiculo'); return false">Alta vehículo</a>
+		      </li>
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divCompraVehiculo'); return false">Compra vehículo</a>
+		      </li>
+		      <li class="nav-item">
+		        <a href="#" class="nav-link" onclick="mostrarFrm('divVentaVehiculo'); return false">Venta vehículo</a>
+		      </li>		      
+		      <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Listados
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		          <a href="#" class="dropdown-item" onclick="mostrarFrm('divListVehiculos'); return false">Vehículos (filtros)</a>
+		          <a href="#" class="dropdown-item" onclick="window.open('listadoVehiculosVenta.html','_blank'); return false">Vehículos a la venta</a>
+		          <a href="#" class="dropdown-item" onclick="mostrarFrm('divListVendidos'); return false">Vendidos entre...</a>
+		          <a href="#" class="dropdown-item" onclick="mostrarFrm('divListComprados'); return false">Comprados entre...</a>
+		          <div class="dropdown-divider"></div>
+		          <a href="#" class="dropdown-item" onclick="window.open('listadoClientes.html','_blank'); return false">Clientes</a>
+		        </div>
+		      </li>
+		    </ul>
+		  </div>
+		</nav>
+	<!--contenido-->
+	<div class="container-fluid bg-light p-4">
+		<div class="row" id="bienvenida">
+			<div class="col">
+				<h1>Bienvenido al asistente</h1>
+				<p>En el menú puede ver las distintas operaciones que puede realizar.</p>
+			</div>
+		</div>
+		<div class="row d-none" id="divAltaCliente">
+			<div class="col-7">
+				<h3>Alta cliente</h3>
+				<!--formulario alta cliente-->
+				<form class="m-2" id="frmAltaCliente" name="frmAltaCliente">
+				  <div class="form-group">
+				    <label for="txtNIF" class="mb-0">NIF:</label>
+				    <input type="text" class="form-control" id="txtNIF" name="txtNIF">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtNombre" class="mb-0">Nombre:</label>
+				    <input type="text" class="form-control" id="txtNombre" name="txtNombre">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtApellidos" class="mb-0">Apellidos:</label>
+				    <input type="text" class="form-control" id="txtApellidos" name="txtApellidos">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtTelefono" class="mb-0">Teléfono: <small>[Solo numeros]</small></label>
+				    <input type="text" class="form-control" id="txtTelefono" name="txtTelefono">
+				  </div>
+				  <input type="button" class="btn btn-primary" id="btnAltaCliente" name="btnAltaCliente" onclick="altaCliente();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divAltaVehiculo">
+			<div class="col-7">
+				<h3>Alta vehículo</h3>
+				<!--formulario alta vehiculo-->
+				<form class="m-2" id="frmAltaVehiculo">
+					<div class="form-group">
+				    	<label for="txtMatricula" class="mb-0">Matrícula:</label>
+				    	<input type="text" class="form-control" id="txtMatricula" name="txtMatricula">
+				  	</div>				
+				  	<div class="form-group">
+					    <label for="txtMarca" class="mb-0">Marca:</label>
+					    <input type="text" class="form-control" id="txtMarca" name="txtMarca">
+				  	</div>
+				  	<div class="form-group">
+				    	<label for="txtModelo" class="mb-0">Modelo:</label>
+					    <input type="text" class="form-control" id="txtModelo" name="txtModelo">
+					</div>
+
+					<div class="form-group">
+    					<label for="txtCombustible" class="mb-0">Combustible:</label>
+    					<select class="form-control" id="selectCombustible" name="selectCombustible">
+					      <option>Gasolina</option>
+					      <option>Diesel</option>
+					      <option>Biocombustible</option>
+					    </select>
+					</div>
+
+					<div class="form-group">
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoVehiculo" id="radioTurismo" value="turismo">
+						  <label class="form-check-label" for="radioTurismo">Turismo</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoVehiculo" id="radio4x4" value="4x4">
+						  <label class="form-check-label" for="radio4x4">V4x4</label>
+						</div>
+					</div>
+
+				    <div class="form-group d-none" id="opcionesTurismo">
+				    	<div class="form-group">
+				    	<div class="form-check form-check-inline">
+  							<input class="form-check-input" type="checkbox" id="chkbxABS" value="abs">
+  							<label class="form-check-label" for="chkbxABS">ABS</label>
+						</div>
+						<div class="form-check form-check-inline">
+  							<input class="form-check-input" type="checkbox" id="chkbxDescapotable" value="descapotable">
+							<label class="form-check-label" for="chkbxDescapotable">Descapotable</label>
+						</div>
+						</div>
+						<div class="form-group">
+						<label for="txtnPuertas" class="mb-0">Número de puertas:</label>
+				    	<input type="text" class="form-control" id="txtnPuertas" name="txtnPuertas">
+				    	</div>
+				    </div>
+				    <div class="form-group d-none" id="opcionesV4x4">
+					  <div class="form-group">
+					    <label for="txtPendiente" class="mb-0">Pendiente máxima: <small>[Solo numeros]</small></label>
+					    <input type="text" class="form-control" id="txtPendiente" name="txtPendiente">
+					  </div>
+				    </div>
+				  <input type="button" class="btn btn-primary" id="btnAltaVehiculo" name="btnAltaVehiculo" onclick="altaVehiculo();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divCompraVehiculo">
+			<div class="col-7">
+				<h3>Nueva compra</h3>
+				<!--formulario compra-->
+				<form class="m-2" id="frmCompraVehiculo" name="frmCompraVehiculo">
+				  <div class="form-group">
+				    <label for="txtClienteCompra" class="mb-0">NIF Cliente:</label>
+				    <input type="text" class="form-control" id="txtClienteCompra" name="txtClienteCompra">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtVehiculoCompra" class="mb-0">Matrícula vehículo:</label>
+				    <input type="text" class="form-control" id="txtVehiculoCompra" name="txtVehiculoCompra">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtImporteCompra" class="mb-0">Importe:</label>
+				    <input type="text" class="form-control" id="txtImporteCompra" name="txtImporteCompra">
+				  </div>				  
+				  <div class="form-group">
+				    <label for="FechaCompra" class="mb-0">Fecha:</label>
+				    <input type="date" class="form-control" id="fechaCompra" name="fechaCompra">
+				  </div>
+				  <input type="button" class="btn btn-primary" id="btnCompraVehiculo" name="btnCompraVehiculo" onclick="compraVehiculo();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divVentaVehiculo">
+			<div class="col-7">
+				<h3>Nueva venta</h3>
+				<!--formulario venta-->
+				<form class="m-2" id="frmVentaVehiculo" name="frmVentaVehiculo">
+				  <div class="form-group">
+				    <label for="txtClienteVenta" class="mb-0">NIF Cliente:</label>
+				    <input type="text" class="form-control" id="txtClienteVenta" name="txtClienteVenta">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtVehiculoVenta" class="mb-0">Matrícula vehículo:</label>
+				    <input type="text" class="form-control" id="txtVehiculoVenta" name="txtVehiculoVenta">
+				  </div>
+				  <div class="form-group">
+				    <label for="txtImporteVenta" class="mb-0">Importe:</label>
+				    <input type="text" class="form-control" id="txtImporteVenta" name="txtImporteVenta">
+				  </div>				  
+				  <div class="form-group">
+				    <label for="FechaVenta" class="mb-0">Fecha:</label>
+				    <input type="date" class="form-control" id="fechaVenta" name="fechaVenta">
+				  </div>
+				  <input type="button" class="btn btn-primary" id="btnVentaVehiculo" name="btnVentaVehiculo" onclick="ventaVehiculo();" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divListVendidos">
+			<div class="col-7">
+				<h3>Vehículos vendidos en un periodo</h3>
+				<!--formulario listado vendido periodo-->
+				<form class="m-2" id="frmListVendidos" name="frmListVendidos">
+					<div class="form-group">
+				    	<label for="fechaVentaInicio" class="mb-0">Desde:</label>
+				    	<input type="date" class="form-control" id="fechaVentaInicio" name="fechaVentaInicio">
+				  	</div>
+					<div class="form-group">
+				    	<label for="fechaVentaFin" class="mb-0">Hasta:</label>
+				    	<input type="date" class="form-control" id="fechaVentaFin" name="fechaVentaFin">
+				  	</div>				  
+				  <input type="button" class="btn btn-primary" id="btnListVehiculosVendidos" name="btnListVehiculosVendidos" onclick="window.open('listadoVehiculosVendidos.html','_blank');" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divListComprados">
+			<div class="col-7">
+				<h3>Vehículos comprados en un periodo</h3>
+				<!--formulario listado comprado periodo-->
+				<form class="m-2" id="frmListComprados" name="frmListComprados">
+					<div class="form-group">
+				    	<label for="fechaCompraInicio" class="mb-0">Desde:</label>
+				    	<input type="date" class="form-control" id="fechaCompraInicio" name="fechaCompraInicio">
+				  	</div>
+					<div class="form-group">
+				    	<label for="fechaCompraFin" class="mb-0">Hasta:</label>
+				    	<input type="date" class="form-control" id="fechaCompraFin" name="fechaCompraFin">
+				  	</div>				  
+				  <input type="button" class="btn btn-primary" id="btnListVehiculosComprados" name="btnListVehiculosComprados" onclick="window.open('listadoVehiculosComprados.html','_blank');" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+		<div class="row d-none" id="divListVehiculos">
+			<div class="col-7">
+				<h3>Listado de vehículos</h3>
+				<!--formulario listado filtro-->
+				<form class="m-2" id="frmListVehiculos" name="frmListVehiculos">
+					<div class="form-group">
+						<h5>Tipo de vehículo</h5>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoVehiculoList" id="radTurismo" value="Turismo">
+						  <label class="form-check-label" for="radTurismo">Turismo</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoVehiculoList" id="rad4x4" value="V4x4">
+						  <label class="form-check-label" for="rad4x4">V4x4</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoVehiculoList" id="radTodos" value="all" checked="checked">
+						  <label class="form-check-label" for="radTodos">Todos</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<h5>Combustible</h5>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoCombustible" id="radGasolina" value="Gasolina">
+						  <label class="form-check-label" for="radGasolina">Gasolina</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoCombustible" id="radDiesel" value="Diesel">
+						  <label class="form-check-label" for="radDiesel">Diesel</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoCombustible" id="radBiocombustible" value="Biocombustible">
+						  <label class="form-check-label" for="radBiocombustible">Biocombustible</label>
+						</div>
+						<div class="form-check form-check-inline">
+						  <input class="form-check-input" type="radio" name="tipoCombustible" id="radAll" value="all" checked="checked">
+						  <label class="form-check-label" for="radAll">Todos</label>
+						</div>
+					</div>
+					<input type="button" class="btn btn-primary" id="btnListadoFiltros" name="btnListadoFiltros" onclick="window.open('listadoVehiculosFiltros.html','_blank');" value="Aceptar"/>
+				</form>
+			</div>
+		</div>
+	</div>
+<!--footer-->
+<div class="jumbotron jumbotron-fluid text-center p-2 mb-0 bg-dark sticky-bottom">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<p class="text-white-50">Apliación gestión QuintoCar</p>
+				<p class="text-white-50">Copyright 2018. All Rights Reserved.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--objetos-->
+<script type="text/javascript" src="objetos.js"></script>
+<!--codigo-->
+<script type="text/javascript"" src="acciones.js"></script>
+
+</body>
+</html>
